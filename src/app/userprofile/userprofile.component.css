@@ -1,0 +1,37 @@
+#profilepanel{
+    border-radius: 30%;
+    color: black;
+    background-image: url('../../assets/bg-profile.jpg');
+    background-size: cover;
+}
+
+.box {
+    flex: 33%;
+    object-fit: none;
+}
+
+.cus_img{
+    background-color: whitesmoke;
+
+    width: 100%;
+    height: 330px;
+
+    /*object-fit: cover;*/              /*fill that image to that div */
+
+     object-fit: scale-down;                  /* crop image to original image size to div and rest of the image will not be shown*/
+
+    object-position: 50% 50%;          /* 100% from x axis x--> or right most*/
+                                        /*so chane x & y axis position depending on your need while object-fit is noe or in other word image zoom and croped note:actually it is pan;*/
+}
+
+.card-title{
+    color: black;
+}
+
+.card-text{
+    color: black;
+}
+
+#carddesign{
+    background-color: cyan;
+}

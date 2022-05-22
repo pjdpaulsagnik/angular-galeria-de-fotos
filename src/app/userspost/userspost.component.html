@@ -1,0 +1,33 @@
+<mat-card class="example-card bg-dark" style="width: 46rem;">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image">
+      <!-- <img [src]="iconuser.posticon" style="width:30px;" class="img-round"> -->
+    </div>
+    <!-- <mat-card-title>{{pobj.username}}</mat-card-title> -->
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="'http://localhost:8080/downloadFile/'+pobj.postId" alt="">
+  <mat-card-content>
+    <h1 class="mat-headline">{{pobj.postTitle}}</h1>
+    <p>{{pobj.postDescription}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="accent" mat-raised-button (click)="likePost(pobj.postId,pobj)" *ngIf="!pobj.hasLiked">LIKE &lt;3</button>
+    <button color="warn" mat-raised-button (click)="unlikePost(pobj.postId,pobj)" *ngIf="pobj.hasLiked">UNLIKE</button>
+    <button color="accent" mat-raised-button id="sharebutton">SHARE</button>
+    <!-- <a href="">{{pobj.totalLikeCount}} Likes</a>   -->
+    <div *ngIf="pobj.hasCommented">
+      <!-- <p class="card-text" >{{pobj.hasCommented.commentedBy}}: <strong>{{pobj.hasCommented.commentPassed}}</strong></p> -->
+      <h3 *ngFor="let x of pobj.hasCommented" class="card-text"><strong>{{ x.commentedBy }}:</strong> {{ x.commentPassed }}</h3>
+    </div>
+    <hr class="w-50">
+    <!-- <div class="input-group mb-3">
+      <input type="text" class="form-control" #comPost placeholder="Add a comment...." style="border: 0px; border-bottom:1px solid lightgrey" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-success" type="button" (click)="commentOnPost(comPost.value,pobj.postId,pobj)" style="border:0">+</button>
+      </div>
+    </div> -->
+  </mat-card-actions>
+</mat-card>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

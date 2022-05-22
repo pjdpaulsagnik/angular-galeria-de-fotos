@@ -1,0 +1,20 @@
+#applogo {
+    padding-left: 18rem;
+}
+
+@media (max-width: 414px) {
+    #applogo {
+        position: relative;
+        top: 10vh;
+        left: 0;
+        padding-left: 0;
+    }
+    .container--appLogo {
+        position: fixed;
+        top: 20vh;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60vw;
+        padding-left: 0;
+    }
+}

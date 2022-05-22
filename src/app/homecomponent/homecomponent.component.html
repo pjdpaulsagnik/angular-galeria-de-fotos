@@ -1,0 +1,29 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
+    </div>
+    <div class="col-sm-3">
+      <input type="text" (ngModelChange)="valuechange($event)" #searchInput="ngModel" ngModel name="searchInput" class="form-control" id="inputData">
+    </div>
+  </div>
+  <div>
+    <div *ngIf="searchedData.length<=0" fxLayout="column" fxLayoutAlign="center center" >
+      <app-userspost [postObj]="x" *ngFor="let x of userObj.allUserPosts" id="dataset"></app-userspost>
+    </div>
+    <div *ngIf="searchInput" fxLayout="column" fxLayoutAlign="center center">
+      <app-userspost [postObj]="x" *ngFor="let x of searchedData" id="dataset"></app-userspost>
+    </div>
+  </div>
+</div>
+
+<div class="container" >
+        <i class="material-icons" matTooltip="Upload a Post" #tooltip="matTooltip" routerLink="/new-post">add_circle</i>
+</div>
+
+<!-- <div class="socialMediaButtons" *ngIf="userAuthObj.isLoggedIn">
+    <div id="twitterButton" class="socialMediaButton">
+        <button routerLink="/new-post" class="btn btn-lg btn-success custom-circle-button"><i class="fa fa-plus" style="font-size: 18px;"></i></button>
+    </div>
+</div> -->

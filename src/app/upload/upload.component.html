@@ -1,0 +1,46 @@
+<div class="container my-5">
+    
+        <div class="container text-center">
+            <div class="row text-center">
+                <img *ngIf="imageInput" [src]="imageInput" class="img img-responsive w-50 mx-auto" #imgPreview>
+            </div>
+        </div>
+        <form class="my-5 w-50 mx-auto" (ngSubmit)="upload(($event))" enctype="multipart/form-data" #f="ngForm">
+            
+            <div class="form-group">
+                <label for="inputpostname">Post Name</label>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                    </div>
+                    <input required #postname="ngModel" ngModel name="postname" type="text" class="form-control" id="inputpostname" placeholder="Postname">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="inputpostdescription">Post Description</label>
+                <textarea required #postdescription="ngModel" ngModel name="postdescription" class="form-control" id="inputpostdescription" cols="30" rows="5"></textarea>
+            </div>
+            
+            <div class="custom-file">
+                <input required ngModel #imgPath="ngModel"  name="imgPath" type="file" class="custom-file-input" id="customFile" #localRefFile (change)="updateFileName($event,localRefFile,localRefLable)">
+                <label class="custom-file-label" for="customFile" #localRefLable>Choose file</label>
+            </div>
+
+            <hr>
+            <hr>
+            <div class="container" *ngIf="msg.validity">
+                <div class="alert" [ngClass]="msg.type" role="alert">
+                    {{msg.msg}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="msg.validity = false;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <hr>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">POST</button>
+
+        </form>
+</div>

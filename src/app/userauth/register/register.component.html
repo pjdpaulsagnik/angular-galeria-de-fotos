@@ -1,0 +1,82 @@
+<div class="container text-center">
+    <div class="row text-center">
+        <img *ngIf="imageInput" [src]="imageInput" class="img img-responsive w-50 mx-auto" #imgPreview>
+    </div>
+</div>
+<hr>
+<hr>
+<div class="container" *ngIf="msg.validity">
+    <div class="alert" [ngClass]="msg.type" role="alert">
+        {{msg.msg}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="msg.validity = false;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+<hr>
+<hr>
+<form class="my-5 w-50 mx-auto" (ngSubmit)="register()" #f="ngForm">
+    <div class="form-group">
+        <label for="inputname">Name</label>
+        <div class="row">
+            <div class="col">
+                <input required #fname="ngModel" ngModel name="fname" type="text" class="form-control" id="inputfname" placeholder="First Name">
+            </div>
+            <div class="col">
+                <input required #lname="ngModel" ngModel name="lname" type="text" class="form-control" id="inputlname" placeholder="Last Name">
+            </div>
+        </div>   
+    </div>
+    <div class="form-group">
+        <label for="inputusername">Username</label>
+        <div class="input-group mb-2">
+              <div class="input-group-text">@</div>
+            <input required #username="ngModel" ngModel name="username" type="text" class="form-control" id="inputusername" placeholder="Username">
+          </div>
+    </div>
+    <div class="form-group">
+      <label for="inputemail">Email</label>
+      <input name="email" email required #email="ngModel" ngModel type="email" class="form-control" id="inputemail" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.(OR WILL WE ?)</small>
+    </div>
+    <div class="form-group" >
+        <div class="row">
+            <div class="col">
+                <label for="inputpassword">Password</label>
+                <input required #password="ngModel" ngModel name="password" type="password" class="form-control my-2" id="inputpassword" placeholder="Password">
+            </div>
+            <div class="col">
+                <label for="inputconfirmpassword">Confirm Password</label>
+                <input required #passconfirm="ngModel" ngModel name="confirm_password" type="password" class="form-control my-2" id="inputpasswordconfirm" placeholder="Confirm Password">
+            </div>
+        </div>
+        <small *ngIf="password.value != passconfirm.value" class="form-text text-danger">Password doesnt match</small>
+    </div>
+    <div class="form-group">
+        <label for="inputbio">Bio</label>
+        <textarea required #userbio="ngModel" ngModel name="userbio" class="form-control" id="inputbio" cols="30" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="user_type">USER_TYPE</label>
+        <select class="form-control" id="user_type" #usertype="ngModel" ngModel required name="usertype" placeholder="typeuser">
+            <option>Normal User</option>
+            <option>Business User</option>
+        </select>
+    </div>
+    <div class="custom-file">
+        <input required ngModel #imgPath="ngModel"  name="imgPath" type="file" class="custom-file-input" id="customFile" #localRefFile (change)="updateFileName($event,localRefFile,localRefLable)">
+        <label class="custom-file-label" for="customFile" #localRefLable>Choose Profile Image</label>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
+<hr>
+<hr>
+<div class="container" *ngIf="msg.validity">
+    <div class="alert" [ngClass]="msg.type" role="alert">
+        {{msg.msg}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="msg.validity = false;">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>

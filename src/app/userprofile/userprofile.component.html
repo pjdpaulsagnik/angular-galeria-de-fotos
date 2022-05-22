@@ -1,0 +1,47 @@
+<div class="container my-5">
+    <div class="jumbotron" id="profilepanel">
+        <div class="row">
+            <div class="col-md-2">
+                <img [src]="'http://localhost:8080/downloadProfileImage/'+userobj.profileLink" class="w-100" style="border-radius: 50%;" >
+            </div>
+            <div class="col-md-10 my-3">
+                <h1>{{ userobj.username }}</h1>
+                <!-- <p style="font-size: 17px;">Follower: <strong>{{ userobj.followerCount }}</strong> | Following: <strong>{{ userobj.followingCount }}</strong> </p> -->
+                <h4>{{ userobj.description }}</h4>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+<div class="container">
+    <hr>
+        <div class="jumbotron my-2" style="background: 0 !important;">
+            <div class="card-group">
+                <div class="row">
+                    <div class="col-md-12" *ngFor="let post of postServObj.userposts;">
+                        <div class="card my-1" id="carddesign">
+                            <div class="card-header">
+                              <!-- <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-1"> -->
+                                        <!-- <img src="https://via.placeholder.com/1000" style="width:30px;" class="img-round"> -->
+                                        <!-- as of now static -->
+                                    <!-- </div>
+                              </div> -->
+                            </div>
+                            <div class="card mx-1 my-2">
+                                <img class="card-img-top" [src]="'http://localhost:8080/downloadFile/'+post.postId" alt="" >
+                            </div>
+                            <div class="card-body">
+                                <!-- <a href="">{{pobj.totalLikeCount}} Likes</a> -->
+                                <h2 class="card-title">{{post.postTitle}}</h2>
+                                <p class="card-text">{{post.postDescription}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- <div class="col-md-4" *ngFor="let p of postServObj.userposts;" > -->
