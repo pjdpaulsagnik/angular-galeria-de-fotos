@@ -15,7 +15,7 @@ export class HomecomponentComponent implements OnInit {
 
   searchedData : specificuserposts[] = [];
 
-  searchInput : string;
+  public searchInput : string;
 
   constructor(public userObj: UserDetails, public userAuthObj: UserAuthentication, private setData : ProfileUserDetails) {
     console.log(this.userObj);
@@ -39,49 +39,45 @@ export class HomecomponentComponent implements OnInit {
   }
 
       //create search functionality
-      search(){
-        const filter = (document.getElementById("searchArea") as HTMLInputElement).value.toUpperCase();
+    //   search(){
+    //     const filter = (document.getElementById("searchArea") as HTMLInputElement).value.toUpperCase();
 
-        const list = document.getElementById("list");
-        const box = list.getElementsByTagName("div");
+    //     const list = document.getElementById("list");
+    //     const box = list.getElementsByTagName("div");
 
-        for(let i = 0; i < box.length ; i++){
-            const availableDocumentName = box[i].getElementsByTagName("h2")[0];
+    //     for(let i = 0; i < box.length ; i++){
+    //         const availableDocumentName = box[i].getElementsByTagName("h2")[0];
 
-            if(availableDocumentName){
-                const name = availableDocumentName.innerText || availableDocumentName.innerHTML;
-                if(name.toUpperCase().indexOf(filter) > -1){
-                    box[i].style.display = "";
-                }
-                else{
-                    box[i].style.display = "none";
-                }
-            }
-        }
-    }
+    //         if(availableDocumentName){
+    //             const name = availableDocumentName.innerText || availableDocumentName.innerHTML;
+    //             if(name.toUpperCase().indexOf(filter) > -1){
+    //                 box[i].style.display = "";
+    //             }
+    //             else{
+    //                 box[i].style.display = "none";
+    //             }
+    //         }
+    //     }
+    // }
 
-    searchFilter(){
-
-      for(let i = 0; i < this.userObj.allUserPosts.length ; i++){
-
-        this.searchedData = this.userObj.allUserPosts.filter((val)=>{
-          val.postTitle.toLowerCase().includes(this.searchInput)
-        })
-
-      }
-
-    }
 
     valuechange(value :string){
       this.searchInput = value;
       console.log("Value Change : ",this.searchInput);
+      // console.log("posts : ",this.userObj.allUserPosts);
+        // console.log("Filtered Data", this.userObj.allUserPosts.filter(
+        // ))
 
-        console.log("Filtered Data", this.userObj.allUserPosts.filter((val)=>{
-          // console.log("Val : ",val);
-              return val;
-        }))
+      function isBigEnough(element : specificuserposts, index, array) {
+          return (value == element.postTitle);
+       }
 
-      console.log("SearchedData = ",this.searchedData);
+       console.log(" Filtered Data : ",this.userObj.allUserPosts.filter(isBigEnough));
+
+       this.searchedData = this.userObj.allUserPosts.filter(isBigEnough);
+       console.log("Test Value : " + this.searchedData);
+
+      // console.log("SearchedData = ",this.searchedData);
 
     }
 }
